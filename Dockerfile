@@ -1,4 +1,10 @@
-FROM alpine
+ARG BASE=alpine
+FROM $BASE
+
+ARG arch=arm
+ENV ARCH=$arch
+
+COPY qemu/qemu-$ARCH-static* /usr/bin/
 
 RUN set -xe && \
     apk update && apk upgrade && \
