@@ -12,7 +12,9 @@ RUN set -xe && \
     python3 py3-requests && \
     set -xe && apk del --progress --purge && rm -rf /var/cache/apk/*
 
+COPY *.py /usr/local/bin/
+
 RUN mkdir /data
 VOLUME /data
 WORKDIR /data
-CMD [ "sh" ]
+CMD [ "getcomics_RSS.py" ]
